@@ -211,7 +211,21 @@ AI-Research-Knowledge-Assistant/
 │
 ├── chroma_db/                # ChromaDB vector store (generated at runtime)
 ├── uploads/                  # Uploaded PDFs (generated at runtime)
-├── screenshots/                     # Screenshots demonstrating functionality — TODO: add
+├── screenshots/               # Screenshots demonstrating functionality
+│   ├── swagger_overview.png
+│   ├── root_response.png
+│   ├── auth_register_request.png
+│   ├── auth_login_response.png
+│   ├── agent_request.png
+│   ├── agent_response.png
+│   ├── upload_document_request.png
+│   ├── upload_document_response.png
+│   ├── list_documents_response.png
+│   ├── delete_document_response.png
+│   ├── search_response.png
+│   ├── summary_response.png
+│   ├── compare_response.png
+│   └── analytics_response.png
 ├── sample_documents/         # Sample PDFs for testing — TODO: add
 │
 ├── Dockerfile
@@ -515,73 +529,77 @@ A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
 
 ### Swagger UI Overview
 
-![Swagger](screenshots/swagger.png)
+![Swagger UI Overview](screenshots/swagger_overview.png)
 
 ### Root / Health Check
 
-`GET /` confirms the API is running.
+`GET /` confirms the API is running:
 
-![Root](screenshots/root.png)
+![Root Response](screenshots/root_response.png)
 
-### Register
+### Authentication
 
-`POST /auth/register` creates a new user account.
+`POST /auth/register` creates a new user account:
 
-![Register](screenshots/register.png)
+![Register Request](screenshots/auth_register_request.png)
 
-### Login
+`POST /auth/login` authenticates the user and returns a JWT bearer token:
 
-`POST /auth/login` authenticates the user and returns a JWT bearer token.
+![Login Response](screenshots/auth_login_response.png)
 
-![Login](screenshots/login.png)
+### Agent-Based Query
+
+`POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources:
+
+![Agent Request](screenshots/agent_request.png)
+
+![Agent Response](screenshots/agent_response.png)
 
 ### Upload Document
 
-`POST /documents/upload` uploads and processes a PDF (OCR + chunking + classification).
+Uploading a PDF (`multipart/form-data`) to `/documents/upload`:
 
-![Upload](screenshots/upload.png)
+![Upload Document Request](screenshots/upload_document_request.png)
+
+Response after processing — document is chunked, OCR'd, and classified:
+
+![Upload Document Response](screenshots/upload_document_response.png)
 
 ### List Documents
 
-`GET /documents` returns all uploaded documents with metadata.
+`GET /documents/` returns all uploaded documents with metadata:
 
-![List Documents](screenshots/list_documents.png)
+![List Documents Response](screenshots/list_documents_response.png)
 
 ### Delete Document
 
-`DELETE /documents/{document_id}` removes a document by ID.
+`DELETE /documents/{document_id}` removes a document by ID:
 
-![Delete Document](screenshots/delete_document.png)
+![Delete Document Response](screenshots/delete_document_response.png)
 
-### Search
+### Semantic Search
 
-`POST /search` performs hybrid (BM25 + vector) semantic search.
+`POST /search` performs hybrid (BM25 + vector) semantic search over uploaded documents:
 
-![Search](screenshots/search.png)
+![Search Response](screenshots/search_response.png)
 
-### Summary
+### Document Summarization
 
-`POST /summary` generates a document summary via Groq LLM.
+`POST /summary` generates an executive/technical/bullet-point summary via Groq LLM:
 
-![Summary](screenshots/summary.png)
+![Summary Response](screenshots/summary_response.png)
 
-### Compare
+### Document Comparison
 
-`POST /compare` compares multiple documents on a given topic.
+`POST /compare` compares multiple documents on a given topic:
 
-![Compare](screenshots/compare.png)
-
-### Agent
-
-`POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources.
-
-![Agent](screenshots/agent_request.png)
+![Compare Response](screenshots/compare_response.png)
 
 ### Analytics
 
-`GET /analytics` returns aggregate stats across all uploaded documents.
+`GET /analytics` returns aggregate stats across all uploaded documents:
 
-![Analytics](screenshots/analytics.png)
+![Analytics Response](screenshots/analytics_response.png)
 
 ---
 
