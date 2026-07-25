@@ -1,76 +1,70 @@
 # AI Research & Knowledge Assistant
 
+An AI-powered Research & Knowledge Assistant built using FastAPI, Groq, ChromaDB, TensorFlow, and Retrieval-Augmented Generation (RAG). The application enables users to upload PDF documents, perform intelligent search, ask questions, generate summaries, compare documents, and interact with an Agent-based workflow.
+
+---
+
 ## Project Overview
 
-AI Research & Knowledge Assistant is a FastAPI-based application designed to help users upload, analyze, search, and query documents using Generative AI techniques.
+The AI Research & Knowledge Assistant is designed to provide an end-to-end document intelligence platform. Users can upload PDF documents, extract text using OCR, classify documents using TensorFlow, store embeddings in ChromaDB, perform Hybrid Retrieval (BM25 + Semantic Search), and generate contextual responses using Groq LLMs.
 
-The system combines OCR, Retrieval-Augmented Generation (RAG), Hybrid Search (BM25 + Vector Search), ChromaDB, and Groq LLMs to provide intelligent responses from uploaded documents.
+The system supports:
 
-The application also supports JWT authentication, multi-user access, document summarization, document comparison, streaming responses, caching, and an agent-based architecture.
+- JWT Authentication
+- Multi-user Support
+- PDF Upload & OCR
+- TensorFlow Document Classification
+- ChromaDB Vector Database
+- Retrieval-Augmented Generation (RAG)
+- Hybrid Search (BM25 + Vector Search)
+- Cross-Encoder Reranking
+- Redis Caching
+- Streaming Responses
+- Document Summarization
+- Document Comparison
+- Agent-Based Architecture
+- Docker Support
+- Unit Testing
+- CI/CD Pipeline
 
 ---
 
 ## Architecture Diagram
 
-```text
-                +----------------+
-                |     User       |
-                +--------+-------+
-                         |
-                         v
-                +----------------+
-                |   FastAPI API  |
-                +--------+-------+
-                         |
-      +------------------+-------------------+
-      |                  |                   |
-      v                  v                   v
-+------------+    +-------------+     +--------------+
-| Auth Layer |    | Upload API  |     | Search API   |
-+------------+    +-------------+     +--------------+
-                         |
-                         v
-                +------------------+
-                | PDF + OCR Engine |
-                +------------------+
-                         |
-                         v
-                +------------------+
-                | Classification   |
-                | (TensorFlow)     |
-                +------------------+
-                         |
-                         v
-                +------------------+
-                | ChromaDB         |
-                | Vector Store     |
-                +------------------+
-                         |
-                         v
-                +------------------+
-                | Hybrid Retrieval |
-                | BM25 + Semantic  |
-                +------------------+
-                         |
-                         v
-                +------------------+
-                | Reranker         |
-                +------------------+
-                         |
-                         v
-                +------------------+
-                | RAG Pipeline     |
-                +------------------+
-                         |
-                         v
-                +------------------+
-                | Groq LLM         |
-                +------------------+
-                         |
-                         v
-                +------------------+
-                | Final Response   |
-                +------------------+
+```mermaid
+flowchart TD
+
+A[User] --> B[FastAPI API]
+
+B --> C[Authentication]
+B --> D[Document Upload]
+B --> E[Search]
+B --> F[Question Answering]
+B --> G[Agent]
+
+D --> H[OCR Engine]
+H --> I[TensorFlow Classifier]
+I --> J[ChromaDB]
+
+E --> K[Hybrid Search]
+K --> L[BM25]
+K --> M[Vector Search]
+
+M --> J
+
+K --> N[Reranker]
+
+F --> O[RAG Pipeline]
+O --> J
+O --> P[Groq LLM]
+
+G --> Q[Tool Selection]
+
+Q --> F
+Q --> R[Summarization]
+Q --> S[Document Comparison]
+
+P --> T[Final Response]
 ```
 
 ---
@@ -78,14 +72,14 @@ The application also supports JWT authentication, multi-user access, document su
 ## Technology Stack
 
 | Component | Technology |
-|----------|------------|
+|----------|----------|
 | Backend | FastAPI |
 | Language | Python 3.11 |
 | Database | SQLite |
-| Vector Database | ChromaDB |
 | Authentication | JWT |
-| LLM | Groq |
+| Vector Database | ChromaDB |
 | OCR | Tesseract OCR |
+| LLM | Groq |
 | ML Framework | TensorFlow |
 | Retrieval | BM25 |
 | RAG | LangChain |
@@ -96,12 +90,152 @@ The application also supports JWT authentication, multi-user access, document su
 
 ---
 
+## Features
+
+### Authentication & Access
+
+- User Registration
+- User Login
+- JWT Authentication
+- Multi-user Support
+
+### Document Handling
+
+- PDF Upload
+- OCR Support for Scanned PDFs
+- TensorFlow Document Classification
+- Metadata Storage
+
+### Search & Retrieval
+
+- Semantic Search
+- BM25 Search
+- Hybrid Search
+- ChromaDB Integration
+- Cross-Encoder Reranking
+
+### AI Features
+
+- Retrieval-Augmented Generation
+- Groq Integration
+- Streaming Responses
+- Document Summarization
+- Document Comparison
+- Agent-Based Architecture
+
+### Engineering Features
+
+- Redis Caching
+- Docker Support
+- Logging
+- Rate Limiting
+- Background Tasks
+- Unit Testing
+- CI/CD Pipeline
+
+---
+
+## Project Structure
+
+```text
+AI-Research-Knowledge-Assistant/
+│
+├── .github/
+│
+├── app/
+│   ├── agents/
+│   │   ├── compare_agent.py
+│   │   ├── graph.py
+│   │   ├── qa_agent.py
+│   │   ├── summary_agent.py
+│   │   └── tools.py
+│   │
+│   ├── auth/
+│   │   ├── dependencies.py
+│   │   └── security.py
+│   │
+│   ├── middleware/
+│   │   └── rate_limit.py
+│   │
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── document.py
+│   │   └── user.py
+│   │
+│   ├── routers/
+│   │   ├── __init__.py
+│   │   ├── agent.py
+│   │   ├── analytics.py
+│   │   ├── auth.py
+│   │   ├── classify.py
+│   │   ├── compare.py
+│   │   ├── documents.py
+│   │   ├── qa.py
+│   │   ├── search.py
+│   │   └── summary.py
+│   │
+│   ├── services/
+│   │   ├── __init__.py
+│   │   ├── background_tasks.py
+│   │   ├── cache_service.py
+│   │   ├── classification_service.py
+│   │   ├── compare_service.py
+│   │   ├── comparison_service.py
+│   │   ├── groq_service.py
+│   │   ├── hybrid_search.py
+│   │   ├── ocr_service.py
+│   │   ├── pdf_service.py
+│   │   ├── rag_service.py
+│   │   ├── reranker.py
+│   │   ├── streaming_service.py
+│   │   ├── summary_service.py
+│   │   └── vector_store.py
+│   │
+│   ├── tests/
+│   │   ├── test_auth.py
+│   │   ├── test_documents.py
+│   │   ├── test_qa.py
+│   │   └── test_search.py
+│   │
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── logger.py
+│   │   └── text_utils.py
+│   │
+│   ├── __init__.py
+│   ├── config.py
+│   ├── database.py
+│   ├── main.py
+│   ├── ml_saved_model.keras
+│   └── schemas.py
+│
+├── chroma_db/                # ChromaDB vector store (generated at runtime)
+├── uploads/                  # Uploaded PDFs (generated at runtime)
+├── docs/                     # Screenshots demonstrating functionality — TODO: add
+├── sample_documents/         # Sample PDFs for testing — TODO: add
+│
+├── Dockerfile
+├── docker-compose.yml
+├── .dockerignore
+├── .env
+├── .env.example
+├── .gitignore
+├── app.db
+├── requirements.txt
+├── postman_collection.json   # TODO: add
+└── README.md
+```
+
+> **Note:** `docs/`, `sample_documents/`, and `postman_collection.json` are not yet present in the repository — see [Before Submission](#before-submission) below.
+
+---
+
 ## Setup Instructions
 
 ### Clone Repository
 
 ```bash
-git clone https://github.com/Narendra-Sonawane7/AI--Research-Knowledge_Assistant.git
+git clone https://github.com/<your-username>/AI-Research-Knowledge-Assistant.git
 
 cd AI-Research-Knowledge-Assistant
 ```
@@ -120,11 +254,49 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
+#### Linux / macOS
+
+```bash
+source .venv/bin/activate
+```
+
 ### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
+
+### Install Tesseract OCR
+
+Download:
+
+- https://github.com/UB-Mannheim/tesseract/wiki
+
+Add Tesseract to PATH.
+
+Example:
+
+```text
+C:\Program Files\Tesseract-OCR
+```
+
+---
+
+### Install Poppler
+
+Download:
+
+- https://github.com/oschwartz10612/poppler-windows
+
+Add Poppler `bin` folder to PATH.
+
+Example:
+
+```text
+C:\poppler\Library\bin
+```
+
+---
 
 ### Run Application
 
@@ -132,7 +304,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
-Open:
+Open Swagger:
 
 ```text
 http://127.0.0.1:8000/docs
@@ -165,117 +337,127 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 ## API Documentation
 
 | Endpoint | Method | Description |
-|--------|--------|------------|
+|--------|--------|--------|
 | / | GET | Health Check |
 | /auth/register | POST | Register User |
 | /auth/login | POST | Login User |
 | /documents/upload | POST | Upload PDF |
-| /documents | GET | List Documents |
+| /documents | GET | Get Documents |
 | /documents/{document_id} | DELETE | Delete Document |
 | /search | POST | Semantic Search |
 | /qa | POST | Ask Questions |
-| /qa/stream | POST | Streaming Responses |
+| /qa/stream | POST | Streaming Response |
 | /summary | POST | Document Summarization |
 | /compare | POST | Document Comparison |
+| /classify | POST | Document Classification (TensorFlow) |
 | /agent | POST | Agent-Based Queries |
 | /analytics | GET | Analytics / Stats |
 
-Swagger Documentation:
+### Swagger Documentation
 
 ```text
 http://127.0.0.1:8000/docs
 ```
 
+All endpoints can be tested directly from this interactive Swagger UI. A Postman collection (`postman_collection.json`) is also included in the repository for offline testing.
+
 ---
 
-## Screenshots
+## Sample API Requests
 
-A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
+### Register
 
-### Swagger UI Overview
+```json
+{
+    "username": "naru",
+    "email": "naru@gmail.com",
+    "password": "123"
+}
+```
 
-![Swagger UI Overview](screenshots/swagger_overview.png)
+### Login
 
-### Root / Health Check
+```json
+{
+    "email": "naru@gmail.com",
+    "password": "123"
+}
+```
 
-`GET /` confirms the API is running:
+Response:
 
-![Root Response](screenshots/root_response.png)
+```json
+{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+    "token_type": "bearer"
+}
+```
 
-### Authentication
-
-`POST /auth/register` creates a new user account:
-
-![Register Request](screenshots/auth_register_request.png)
-
-`POST /auth/login` authenticates the user and returns a JWT bearer token:
-
-![Login Response](screenshots/auth_login_response.png)
-
-### Agent-Based Query
-
-`POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources:
-
-![Agent Request](screenshots/agent_request.png)
-
-![Agent Response](screenshots/agent_response.png)
+---
 
 ### Upload Document
 
-Uploading a PDF (`multipart/form-data`) to `/documents/upload`:
+```text
+POST /documents/upload
+```
 
-![Upload Document Request](screenshots/upload_document_request.png)
+Upload:
 
-Response after processing — document is chunked, OCR'd, and classified:
+```text
+sample_documents/ai.pdf
+```
 
-![Upload Document Response](screenshots/upload_document_response.png)
+---
 
-### List Documents
+### Search
 
-`GET /documents/` returns all uploaded documents with metadata:
+```json
+{
+    "query": "what is gen ai?"
+}
+```
 
-![List Documents Response](screenshots/list_documents_response.png)
+---
 
-### Delete Document
+### Summary
 
-`DELETE /documents/{document_id}` removes a document by ID:
+```json
+{
+    "document_id": 1,
+    "style": "executive"
+}
+```
 
-![Delete Document Response](screenshots/delete_document_response.png)
+---
 
-### Semantic Search
+### Compare
 
-`POST /search` performs hybrid (BM25 + vector) semantic search over uploaded documents:
+```json
+{
+    "document_ids": [1, 2],
+    "topic": "gen ai"
+}
+```
 
-![Search Response](screenshots/search_response.png)
+---
 
-### Document Summarization
+### Agent
 
-`POST /summary` generates an executive/technical/bullet-point summary via Groq LLM:
-
-![Summary Response](screenshots/summary_response.png)
-
-### Document Comparison
-
-`POST /compare` compares multiple documents on a given topic:
-
-![Compare Response](screenshots/compare_response.png)
-
-### Analytics
-
-`GET /analytics` returns aggregate stats across all uploaded documents:
-
-![Analytics Response](screenshots/analytics_response.png)
+```text
+GET /agent?query=what is Gen AI?
+```
 
 ---
 
 ## Assumptions
 
 - Users upload PDF documents.
-- Groq API key is available.
 - Tesseract OCR is installed locally.
-- Poppler is installed for scanned PDFs.
-- Redis is optional and the application should function without it.
-- The TensorFlow classifier is a demonstration model and not trained on a production dataset.
+- Poppler is installed for OCR processing.
+- Redis is optional.
+- Groq API Key is available.
+- Docker is optional for local development.
+- TensorFlow model is trained on a small demonstration dataset.
 
 ---
 
@@ -283,15 +465,27 @@ Response after processing — document is chunked, OCR'd, and classified:
 
 ### FastAPI
 
-Chosen for its performance, asynchronous capabilities, and automatic Swagger documentation.
+Selected for:
+
+- High Performance
+- Asynchronous Support
+- Automatic API Documentation
 
 ### ChromaDB
 
-Selected for lightweight vector storage and easy integration with RAG pipelines.
+Chosen because:
+
+- Lightweight
+- Easy Vector Storage
+- Supports RAG Workflows
 
 ### Groq
 
-Used due to its fast inference speed and free developer tier.
+Selected due to:
+
+- Fast Inference
+- Free Developer Tier
+- Easy API Integration
 
 ### Hybrid Search
 
@@ -301,26 +495,106 @@ Implemented using:
 - Semantic Search
 - Cross-Encoder Reranking
 
-to improve retrieval quality.
+This improves retrieval quality significantly.
 
 ### Agent Architecture
 
-Implemented to demonstrate:
+The Agent layer dynamically selects tools based on the user query.
 
-- Tool Selection
-- Task Orchestration
-- Agentic AI Concepts
+Supported tools:
+
+- Question Answering
+- Summarization
+- Document Comparison
+
+---
+
+## Screenshots
+
+A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
+
+### Swagger UI Overview
+
+![Swagger](docs/swagger.png)
+
+### Root / Health Check
+
+`GET /` confirms the API is running.
+
+![Root](docs/root.png)
+
+### Register
+
+`POST /auth/register` creates a new user account.
+
+![Register](docs/register.png)
+
+### Login
+
+`POST /auth/login` authenticates the user and returns a JWT bearer token.
+
+![Login](docs/login.png)
+
+### Upload Document
+
+`POST /documents/upload` uploads and processes a PDF (OCR + chunking + classification).
+
+![Upload](docs/upload.png)
+
+### List Documents
+
+`GET /documents` returns all uploaded documents with metadata.
+
+![List Documents](docs/list_documents.png)
+
+### Delete Document
+
+`DELETE /documents/{document_id}` removes a document by ID.
+
+![Delete Document](docs/delete_document.png)
+
+### Search
+
+`POST /search` performs hybrid (BM25 + vector) semantic search.
+
+![Search](docs/search.png)
+
+### Summary
+
+`POST /summary` generates a document summary via Groq LLM.
+
+![Summary](docs/summary.png)
+
+### Compare
+
+`POST /compare` compares multiple documents on a given topic.
+
+![Compare](docs/compare.png)
+
+### Agent
+
+`POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources.
+
+![Agent](docs/agent.png)
+
+### Analytics
+
+`GET /analytics` returns aggregate stats across all uploaded documents.
+
+![Analytics](docs/analytics.png)
 
 ---
 
 ## Limitations
 
-- Supports only PDF documents.
-- TensorFlow model uses a dummy dataset.
-- Redis caching is optional.
-- No cloud deployment in the current implementation.
-- Docker requires Docker Desktop and WSL2.
-- Multi-modal support (DOCX, PPTX, Images) is not implemented.
+- Supports PDF files only.
+- TensorFlow model is a demo classifier.
+- No cloud deployment.
+- Redis is optional.
+- Docker requires Docker Desktop.
+- Multi-modal document support is not implemented.
+- Table extraction is not implemented.
+- Full LangGraph workflow is not implemented.
 
 ---
 
@@ -331,43 +605,116 @@ Implemented to demonstrate:
 - CSV Support
 - Image Support
 - Table Extraction
+- OCR Improvements
 - AWS Deployment
 - Render Deployment
-- Full LangGraph Multi-Agent Workflow
-- Metadata-based Retrieval
-- Production-grade TensorFlow Model
-- Real-time Monitoring
 - Kubernetes Deployment
+- Full LangGraph Multi-Agent Workflow
+- Production TensorFlow Model
+- Metadata-based Retrieval
+- Real-time Monitoring
 
 ---
 
-## Features
+## Trained TensorFlow Model
 
-- JWT Authentication
-- Multi-user Support
-- PDF Upload
-- OCR Support
-- TensorFlow Classification
-- ChromaDB Integration
-- Retrieval-Augmented Generation
-- Hybrid Search
-- Cross-Encoder Reranking
-- Groq LLM Integration
-- Streaming Responses
-- Redis Caching
-- Agent-Based Architecture
-- Logging
-- Rate Limiting
-- Background Tasks
-- Docker Support
-- Unit Testing
-- CI/CD Pipeline
+The repository includes:
+
+```text
+app/ml_saved_model.keras
+```
+
+This model is trained using a small demonstration dataset for assignment purposes.
+
+> Note: For production use, the model should be trained using a larger labeled dataset.
+
+---
+
+## Sample Documents
+
+Sample PDFs are included:
+
+```text
+sample_documents/
+```
+
+Examples:
+
+- ai.pdf
+- ml.pdf
+- rag.pdf
+
+---
+
+## Testing
+
+Run tests:
+
+```bash
+pytest app/tests
+```
+
+---
+
+## Docker Support
+
+Build Docker image:
+
+```bash
+docker compose up --build
+```
+
+> Note: Docker Desktop with WSL2 is required on Windows.
+
+---
+
+## CI/CD
+
+GitHub Actions workflow can be configured for:
+
+- Automated Testing
+- Build Validation
+- Deployment Pipelines
+
+---
+
+## Before Submission
+
+The following still need to be added to the repository before it's submission-ready:
+
+- [ ] **`docs/`** — add the 12 screenshot PNGs demonstrating each endpoint (already generated separately; see the Screenshots section below for filenames). Note: a screenshot of `/classify` is not yet included — add one if possible.
+- [ ] **`sample_documents/`** — add sample PDFs (e.g. `ai.pdf`, `ml.pdf`, `rag.pdf`) for testing upload/search/summary/compare
+- [ ] **`postman_collection.json`** — export a Postman collection, or remove this line from the checklist below and rely on Swagger only
+
+Everything else (source code, model, README, API docs, Swagger) is already in place.
+
+---
+
+## Submission Checklist
+
+| Requirement | Status |
+|---|---|
+| Complete Source Code | ✅ Present (`app/`) |
+| Public GitHub Repository | ✅ |
+| README Documentation | ✅ This file |
+| Trained TensorFlow Model | ✅ `app/ml_saved_model.keras` |
+| Sample Documents | ⬜ Not yet added — see [Before Submission](#before-submission) |
+| API Documentation | ✅ [API Documentation](#api-documentation) section |
+| Screenshots | ⬜ Not yet added — see [Before Submission](#before-submission) |
+| Postman Collection | ⬜ Not yet added — optional if Swagger is sufficient |
+| Swagger Documentation | ✅ Available at `/docs` |
 
 ---
 
 ## Author
 
-**Narendra Sonawane**
+### Narendra Sonawane
 
-- LinkedIn: https://linkedin.com/in/narendrasonawane77
-- GitHub: https://github.com/Narendra-Sonawane7
+- GitHub: https://github.com/narendrasonawane77
+- LinkedIn: https://github.com/Narendra-Sonawane7
+
+---
+
+## License
+
+This project is submitted as part of the Sequelstring Solutions & Consultancy Pvt Ltd AI Engineering Assignment.
