@@ -8,6 +8,10 @@ The system combines OCR, Retrieval-Augmented Generation (RAG), Hybrid Search (BM
 
 The application also supports JWT authentication, multi-user access, document summarization, document comparison, streaming responses, caching, and an agent-based architecture.
 
+Project Demonstration Link:
+Kindly find the project demonstration video at the following link:
+https://drive.google.com/file/d/1VwVj0mT8ZsaItKdw-UTQsUNbGcAaxMga/view?usp=drive_link
+
 ---
 
 ## Architecture Diagram
@@ -364,9 +368,7 @@ Implemented to demonstrate:
 - CI/CD Pipeline
 
 ---
-Project Demonstration Link:
-Kindly find the project demonstration video at the following link:
-https://drive.google.com/file/d/1VwVj0mT8ZsaItKdw-UTQsUNbGcAaxMga/view?usp=drive_link
+
 ## Author
 
 **Narendra Sonawane**
