@@ -183,6 +183,56 @@ http://127.0.0.1:8000/docs
 
 ---
 
+## Screenshots
+
+A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
+
+### Swagger UI Overview
+
+![Swagger UI Overview](screenshots/swagger_overview.png)
+
+### Upload Document
+
+Uploading a PDF (`multipart/form-data`) to `/documents/upload`:
+
+![Upload Document Request](screenshots/upload_document_request.png)
+
+Response after processing — document is chunked, OCR'd, and classified:
+
+![Upload Document Response](screenshots/upload_document_response.png)
+
+### List Documents
+
+`GET /documents/` returns all uploaded documents with metadata:
+
+![List Documents Response](screenshots/list_documents_response.png)
+
+### Delete Document
+
+`DELETE /documents/{document_id}` removes a document by ID:
+
+![Delete Document Response](screenshots/delete_document_response.png)
+
+### Semantic Search
+
+`POST /search` performs hybrid (BM25 + vector) semantic search over uploaded documents:
+
+![Search Response](screenshots/search_response.png)
+
+### Document Summarization
+
+`POST /summary` generates an executive/technical/bullet-point summary via Groq LLM:
+
+![Summary Response](screenshots/summary_response.png)
+
+### Document Comparison
+
+`POST /compare` compares multiple documents on a given topic:
+
+![Compare Response](screenshots/compare_response.png)
+
+---
+
 ## Assumptions
 
 - Users upload PDF documents.
