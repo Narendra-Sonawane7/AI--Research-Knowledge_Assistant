@@ -194,7 +194,7 @@ A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
 
 ### Swagger UI Overview
 
-![Swagger UI Overview](screenshots/swagger_overview.png)
+![Swagger UI Overview](screenshots/swagger_overview.png) 
 
 ### Root / Health Check
 
