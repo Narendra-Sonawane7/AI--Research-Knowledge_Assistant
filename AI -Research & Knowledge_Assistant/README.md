@@ -211,7 +211,7 @@ AI-Research-Knowledge-Assistant/
 │
 ├── chroma_db/                # ChromaDB vector store (generated at runtime)
 ├── uploads/                  # Uploaded PDFs (generated at runtime)
-├── docs/                     # Screenshots demonstrating functionality — TODO: add
+├── screenshots/                     # Screenshots demonstrating functionality — TODO: add
 ├── sample_documents/         # Sample PDFs for testing — TODO: add
 │
 ├── Dockerfile
@@ -226,7 +226,7 @@ AI-Research-Knowledge-Assistant/
 └── README.md
 ```
 
-> **Note:** `docs/`, `sample_documents/`, and `postman_collection.json` are not yet present in the repository — see [Before Submission](#before-submission) below.
+> **Note:** `sample_documents/` and `postman_collection.json` are not yet present in the repository — see [Before Submission](#before-submission) below.
 
 ---
 
@@ -515,73 +515,73 @@ A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
 
 ### Swagger UI Overview
 
-![Swagger](docs/swagger.png)
+![Swagger](screenshots/swagger.png)
 
 ### Root / Health Check
 
 `GET /` confirms the API is running.
 
-![Root](docs/root.png)
+![Root](screenshots/root.png)
 
 ### Register
 
 `POST /auth/register` creates a new user account.
 
-![Register](docs/register.png)
+![Register](screenshots/register.png)
 
 ### Login
 
 `POST /auth/login` authenticates the user and returns a JWT bearer token.
 
-![Login](docs/login.png)
+![Login](screenshots/login.png)
 
 ### Upload Document
 
 `POST /documents/upload` uploads and processes a PDF (OCR + chunking + classification).
 
-![Upload](docs/upload.png)
+![Upload](screenshots/upload.png)
 
 ### List Documents
 
 `GET /documents` returns all uploaded documents with metadata.
 
-![List Documents](docs/list_documents.png)
+![List Documents](screenshots/list_documents.png)
 
 ### Delete Document
 
 `DELETE /documents/{document_id}` removes a document by ID.
 
-![Delete Document](docs/delete_document.png)
+![Delete Document](screenshots/delete_document.png)
 
 ### Search
 
 `POST /search` performs hybrid (BM25 + vector) semantic search.
 
-![Search](docs/search.png)
+![Search](screenshots/search.png)
 
 ### Summary
 
 `POST /summary` generates a document summary via Groq LLM.
 
-![Summary](docs/summary.png)
+![Summary](screenshots/summary.png)
 
 ### Compare
 
 `POST /compare` compares multiple documents on a given topic.
 
-![Compare](docs/compare.png)
+![Compare](screenshots/compare.png)
 
 ### Agent
 
 `POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources.
 
-![Agent](docs/agent.png)
+![Agent](screenshots/agent.png)
 
 ### Analytics
 
 `GET /analytics` returns aggregate stats across all uploaded documents.
 
-![Analytics](docs/analytics.png)
+![Analytics](screenshots/analytics.png)
 
 ---
 
@@ -682,11 +682,11 @@ GitHub Actions workflow can be configured for:
 
 The following still need to be added to the repository before it's submission-ready:
 
-- [ ] **`docs/`** — add the 12 screenshot PNGs demonstrating each endpoint (already generated separately; see the Screenshots section below for filenames). Note: a screenshot of `/classify` is not yet included — add one if possible.
 - [ ] **`sample_documents/`** — add sample PDFs (e.g. `ai.pdf`, `ml.pdf`, `rag.pdf`) for testing upload/search/summary/compare
 - [ ] **`postman_collection.json`** — export a Postman collection, or remove this line from the checklist below and rely on Swagger only
+- [ ] A screenshot of `/classify` is not yet included in `screenshots/` — add one if possible
 
-Everything else (source code, model, README, API docs, Swagger) is already in place.
+Everything else (source code, model, README, API docs, Swagger, screenshots) is already in place.
 
 ---
 
@@ -700,7 +700,7 @@ Everything else (source code, model, README, API docs, Swagger) is already in pl
 | Trained TensorFlow Model | ✅ `app/ml_saved_model.keras` |
 | Sample Documents | ⬜ Not yet added — see [Before Submission](#before-submission) |
 | API Documentation | ✅ [API Documentation](#api-documentation) section |
-| Screenshots | ⬜ Not yet added — see [Before Submission](#before-submission) |
+| Screenshots | ✅ `screenshots/` folder |
 | Postman Collection | ⬜ Not yet added — optional if Swagger is sufficient |
 | Swagger Documentation | ✅ Available at `/docs` |
 
@@ -710,8 +710,8 @@ Everything else (source code, model, README, API docs, Swagger) is already in pl
 
 ### Narendra Sonawane
 
-- GitHub: https://github.com/narendrasonawane77
-- LinkedIn: https://github.com/Narendra-Sonawane7
+- GitHub: https://github.com/<your-username>
+- LinkedIn: https://linkedin.com/in/<your-linkedin>
 
 ---
 
