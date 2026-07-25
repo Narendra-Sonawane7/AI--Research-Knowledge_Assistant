@@ -359,5 +359,5 @@ Implemented to demonstrate:
 
 **Narendra Sonawane**
 
-- LinkedIn: https://linkedin.com/in/<your-profile>
-- GitHub: https://github.com/<your-username>
+- LinkedIn: https://linkedin.com/in/narendrasonawane77
+- GitHub: https://github.com/Narendra-Sonawane7
