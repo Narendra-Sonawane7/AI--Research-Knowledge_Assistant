@@ -166,14 +166,19 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 | Endpoint | Method | Description |
 |--------|--------|------------|
+| / | GET | Health Check |
 | /auth/register | POST | Register User |
 | /auth/login | POST | Login User |
 | /documents/upload | POST | Upload PDF |
 | /documents | GET | List Documents |
+| /documents/{document_id} | DELETE | Delete Document |
 | /search | POST | Semantic Search |
 | /qa | POST | Ask Questions |
 | /qa/stream | POST | Streaming Responses |
+| /summary | POST | Document Summarization |
+| /compare | POST | Document Comparison |
 | /agent | POST | Agent-Based Queries |
+| /analytics | GET | Analytics / Stats |
 
 Swagger Documentation:
 
@@ -190,6 +195,20 @@ A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
 ### Swagger UI Overview
 
 ![Swagger UI Overview](screenshots/swagger_overview.png)
+
+### Root / Health Check
+
+`GET /` confirms the API is running:
+
+![Root Response](screenshots/root_response.png)
+
+### Agent-Based Query
+
+`POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources:
+
+![Agent Request](screenshots/agent_request.png)
+
+![Agent Response](screenshots/agent_response.png)
 
 ### Upload Document
 
@@ -230,6 +249,12 @@ Response after processing — document is chunked, OCR'd, and classified:
 `POST /compare` compares multiple documents on a given topic:
 
 ![Compare Response](screenshots/compare_response.png)
+
+### Analytics
+
+`GET /analytics` returns aggregate stats across all uploaded documents:
+
+![Analytics Response](screenshots/analytics_response.png)
 
 ---
 
