@@ -8,6 +8,10 @@ An AI-powered Research & Knowledge Assistant built using FastAPI, Groq, ChromaDB
 
 The AI Research & Knowledge Assistant is designed to provide an end-to-end document intelligence platform. Users can upload PDF documents, extract text using OCR, classify documents using TensorFlow, store embeddings in ChromaDB, perform Hybrid Retrieval (BM25 + Semantic Search), and generate contextual responses using Groq LLMs.
 
+Project Demonstration Link:
+Kindly find the project demonstration video at the following link:
+https://drive.google.com/file/d/1VwVj0mT8ZsaItKdw-UTQsUNbGcAaxMga/view?usp=drive_link
+
 The system supports:
 
 - JWT Authentication
