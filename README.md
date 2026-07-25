@@ -202,6 +202,16 @@ A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
 
 ![Root Response](screenshots/root_response.png)
 
+### Authentication
+
+`POST /auth/register` creates a new user account:
+
+![Register Request](screenshots/auth_register_request.png)
+
+`POST /auth/login` authenticates the user and returns a JWT bearer token:
+
+![Login Response](screenshots/auth_login_response.png)
+
 ### Agent-Based Query
 
 `POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources:
