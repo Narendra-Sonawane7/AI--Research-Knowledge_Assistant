@@ -728,8 +728,8 @@ Everything else (source code, model, README, API docs, Swagger, screenshots) is 
 
 ### Narendra Sonawane
 
-- GitHub: https://github.com/<your-username>
-- LinkedIn: https://linkedin.com/in/<your-linkedin>
+- GitHub: https://github.com/https://github.com/Narendra-Sonawane7
+- LinkedIn: https://linkedin.com/in/narendrasonawane77
 
 ---
 
