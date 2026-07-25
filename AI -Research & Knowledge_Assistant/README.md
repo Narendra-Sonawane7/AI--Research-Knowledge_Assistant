@@ -101,7 +101,7 @@ The application also supports JWT authentication, multi-user access, document su
 ### Clone Repository
 
 ```bash
-git clone https://github.com/<username>/AI-Research-Knowledge-Assistant.git
+git clone https://github.com/Narendra-Sonawane7/AI--Research-Knowledge_Assistant.git
 
 cd AI-Research-Knowledge-Assistant
 ```
