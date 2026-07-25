@@ -575,7 +575,7 @@ A quick walkthrough of the API in action, via the Swagger UI (`/docs`).
 
 `POST /agent` routes a natural-language query through the agent, which retrieves context and answers with sources.
 
-![Agent](screenshots/agent.png)
+![Agent](screenshots/agent_request.png)
 
 ### Analytics
 
